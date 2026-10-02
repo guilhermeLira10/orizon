@@ -103,6 +103,91 @@
   background: transparent;
   cursor: pointer;
 }
+.language-picker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 12px;
+}
+.language-trigger {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 84px;
+  height: 42px;
+  padding: 0 14px;
+  border: 1px solid #ffffff20;
+  border-radius: 24px;
+  color: var(--ink);
+  background: #fff;
+  box-shadow: 0 8px 20px #0000001f;
+  font-size: 19px;
+  cursor: pointer;
+}
+.language-trigger svg {
+  color: #4c478f;
+  transition: transform 0.2s;
+}
+.language-trigger[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+.language-menu {
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 238px;
+  padding: 8px;
+  border: 1px solid #e6e4df;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 16px 35px #0000001f;
+}
+.language-option {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+  padding: 12px 11px;
+  border: 0;
+  border-radius: 6px;
+  color: var(--ink);
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+.language-option:hover,
+.language-option.is-selected {
+  background: var(--paper-muted);
+}
+.language-option svg {
+  margin-left: auto;
+  color: #4b956e;
+}
+.language-flag {
+  display: block;
+  width: 32px;
+  height: 22px;
+  object-fit: cover;
+  border-radius: 1px;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+:is(a, button, select, input, textarea):focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
 .hero {
   position: relative;
   min-height: 740px;
@@ -144,7 +229,7 @@
   gap: 10px;
   margin: 0 0 25px;
   color: var(--gold);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.17em;
 }
@@ -162,8 +247,8 @@ p {
 h1,
 h2 {
   font-family: var(--display);
-  letter-spacing: -0.055em;
-  line-height: 1.02;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 h1 {
   max-width: 650px;
@@ -180,7 +265,7 @@ h2 em {
   max-width: 470px;
   color: #ffffffaa;
   font-size: 17px;
-  line-height: 1.65;
+  line-height: 1.75;
 }
 .hero-actions {
   display: flex;
@@ -461,6 +546,15 @@ h2 em {
   color: var(--text);
   font-size: 17px;
   line-height: 1.75;
+}
+.services,
+.faq,
+.loyalty-section,
+.process,
+.contact-section,
+.site-footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
 }
 .services,
 .faq {
