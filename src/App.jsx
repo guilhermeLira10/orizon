@@ -45,6 +45,34 @@ function SectionLabel({ children }) {
   );
 }
 
+function LanguageFlag({ country }) {
+  if (country === "pt-PT") {
+    return (
+      <svg className="language-flag" viewBox="0 0 32 22" aria-hidden="true">
+        <rect width="13" height="22" fill="#046a38" />
+        <rect x="13" width="19" height="22" fill="#da291c" />
+        <circle cx="13" cy="11" r="4.5" fill="#ffcd00" />
+      </svg>
+    );
+  }
+  if (country === "pt-BR") {
+    return (
+      <svg className="language-flag" viewBox="0 0 32 22" aria-hidden="true">
+        <rect width="32" height="22" fill="#009c3b" />
+        <path d="M16 2 29 11 16 20 3 11Z" fill="#ffdf00" />
+        <circle cx="16" cy="11" r="4.5" fill="#002776" />
+      </svg>
+    );
+  }
+  return (
+    <svg className="language-flag" viewBox="0 0 32 22" aria-hidden="true">
+      <rect width="32" height="22" fill="#fff" />
+      <path d="M0 0h32v3H0zm0 6h32v3H0zm0 6h32v3H0zm0 6h32v3H0z" fill="#b22234" />
+      <path d="M0 0h14v12H0z" fill="#3c3b6e" />
+    </svg>
+  );
+}
+
 export default function App() {
   const [language, setLanguage] = useState(() => {
     const savedLanguage = window.localStorage.getItem("orizon-language");
@@ -123,15 +151,8 @@ export default function App() {
               aria-haspopup="listbox"
               onClick={() => setLanguageMenuOpen(!languageMenuOpen)}
             >
-              <img
-                src={selectedLanguage.flag}
-                alt=""
-                className="language-flag"
-                width="32"
-                height="22"
-                aria-hidden="true"
-              />
-              <CaretDown size={14} weight="bold" aria-hidden="true" />
+              <LanguageFlag country={selectedLanguage.flag} />
+              <CaretDown className="language-caret" size={14} weight="bold" aria-hidden="true" />
             </button>
             {languageMenuOpen && (
               <div className="language-menu" role="listbox" aria-label={t.accessibility.language}>
@@ -147,15 +168,7 @@ export default function App() {
                       setLanguageMenuOpen(false);
                     }}
                   >
-                    <img
-                      src={option.flag}
-                      alt=""
-                      className="language-flag"
-                      width="32"
-                      height="22"
-                      loading="lazy"
-                      aria-hidden="true"
-                    />
+                    <LanguageFlag country={option.flag} />
                     <span>{option.label}</span>
                     {language === option.value && <Check size={17} weight="bold" aria-hidden="true" />}
                   </button>
@@ -178,7 +191,7 @@ export default function App() {
         <section className="hero" id="inicio">
           <div className="hero-grid" aria-hidden="true" />
           <div className="container hero-content">
-            <div className="hero-copy reveal">
+            <div className="hero-copy">
               <SectionLabel>{t.hero.label}</SectionLabel>
               <h1>{t.hero.title}</h1>
               <p className="hero-text">{t.hero.text}</p>
@@ -196,7 +209,7 @@ export default function App() {
               </div>
             </div>
             <div
-              className="hero-visual reveal delay-1"
+              className="hero-visual"
               aria-label={t.accessibility.visual}
             >
               <div className="visual-orbit orbit-one" />

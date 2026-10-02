@@ -8,8 +8,8 @@
   --gold-bright: #e3c681;
   --line: rgba(17, 17, 15, 0.14);
   --line-light: rgba(255, 255, 255, 0.16);
-  --sans: "DM Sans", sans-serif;
-  --display: "Manrope", sans-serif;
+  --sans: Arial, Helvetica, sans-serif;
+  --display: "Trebuchet MS", Arial, Helvetica, sans-serif;
   font-family: var(--sans);
   color: var(--ink);
   background: var(--paper);

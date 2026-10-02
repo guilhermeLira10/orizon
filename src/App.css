@@ -124,11 +124,11 @@
   font-size: 19px;
   cursor: pointer;
 }
-.language-trigger svg {
+.language-caret {
   color: #4c478f;
   transition: transform 0.2s;
 }
-.language-trigger[aria-expanded="true"] svg {
+.language-trigger[aria-expanded="true"] .language-caret {
   transform: rotate(180deg);
 }
 .language-menu {
@@ -162,7 +162,7 @@
 .language-option.is-selected {
   background: var(--paper-muted);
 }
-.language-option svg {
+.language-option > svg:not(.language-flag) {
   margin-left: auto;
   color: #4b956e;
 }
@@ -949,22 +949,6 @@ h2 em {
 }
 .whatsapp-float:hover {
   transform: translateY(-4px);
-}
-.reveal {
-  animation: reveal 0.8s both;
-}
-.delay-1 {
-  animation-delay: 0.15s;
-}
-@keyframes reveal {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 @keyframes float {
   0%,

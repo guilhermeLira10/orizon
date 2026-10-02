@@ -1,9 +1,9 @@
 import React from "react";
 
 export const languageOptions = [
-  { value: "pt-PT", label: "Português de Portugal", flag: "https://cdn-icons-png.flaticon.com/512/206/206628.png" },
-  { value: "pt-BR", label: "Português do Brasil", flag: "https://cdn-icons-png.flaticon.com/512/3955/3955549.png" },
-  { value: "en", label: "English", flag: "https://cdn-icons-png.flaticon.com/512/555/555417.png" },
+  { value: "pt-PT", label: "Português de Portugal", flag: "pt-PT" },
+  { value: "pt-BR", label: "Português do Brasil", flag: "pt-BR" },
+  { value: "en", label: "English", flag: "en" },
 ];
 
 const rich = (children) => React.createElement(React.Fragment, null, ...children);
