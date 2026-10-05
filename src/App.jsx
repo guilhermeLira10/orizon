@@ -20,6 +20,8 @@ import {
 } from "@phosphor-icons/react";
 import { whatsappUrl } from "./data/siteContent";
 import { languageOptions, translations } from "./data/translations.jsx";
+import performanceBefore from "./assets/nathieli-performance-before.png";
+import performanceAfter from "./assets/nathieli-performance-after.png";
 import "./App.css";
 
 function Logo({ light = false, label }) {
@@ -67,7 +69,10 @@ function LanguageFlag({ country }) {
   return (
     <svg className="language-flag" viewBox="0 0 32 22" aria-hidden="true">
       <rect width="32" height="22" fill="#fff" />
-      <path d="M0 0h32v3H0zm0 6h32v3H0zm0 6h32v3H0zm0 6h32v3H0z" fill="#b22234" />
+      <path
+        d="M0 0h32v3H0zm0 6h32v3H0zm0 6h32v3H0zm0 6h32v3H0z"
+        fill="#b22234"
+      />
       <path d="M0 0h14v12H0z" fill="#3c3b6e" />
     </svg>
   );
@@ -82,9 +87,13 @@ export default function App() {
   const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(0);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [formError, setFormError] = useState("");
   const t = translations[language];
   const languagePickerRef = useRef(null);
-  const selectedLanguage = languageOptions.find((option) => option.value === language);
+  const selectedLanguage = languageOptions.find(
+    (option) => option.value === language,
+  );
   const closeMenu = () => setMenuOpen(false);
 
   useEffect(() => {
@@ -130,6 +139,9 @@ export default function App() {
             <a href="#processo" onClick={closeMenu}>
               {t.nav.process}
             </a>
+            <a href="#portfolio" onClick={closeMenu}>
+              {t.nav.portfolio}
+            </a>
             <a href="#contato" onClick={closeMenu}>
               {t.nav.contact}
             </a>
@@ -152,10 +164,19 @@ export default function App() {
               onClick={() => setLanguageMenuOpen(!languageMenuOpen)}
             >
               <LanguageFlag country={selectedLanguage.flag} />
-              <CaretDown className="language-caret" size={14} weight="bold" aria-hidden="true" />
+              <CaretDown
+                className="language-caret"
+                size={14}
+                weight="bold"
+                aria-hidden="true"
+              />
             </button>
             {languageMenuOpen && (
-              <div className="language-menu" role="listbox" aria-label={t.accessibility.language}>
+              <div
+                className="language-menu"
+                role="listbox"
+                aria-label={t.accessibility.language}
+              >
                 {languageOptions.map((option) => (
                   <button
                     className={`language-option ${language === option.value ? "is-selected" : ""}`}
@@ -170,7 +191,9 @@ export default function App() {
                   >
                     <LanguageFlag country={option.flag} />
                     <span>{option.label}</span>
-                    {language === option.value && <Check size={17} weight="bold" aria-hidden="true" />}
+                    {language === option.value && (
+                      <Check size={17} weight="bold" aria-hidden="true" />
+                    )}
                   </button>
                 ))}
               </div>
@@ -208,10 +231,7 @@ export default function App() {
                 <span>{t.hero.proof}</span>
               </div>
             </div>
-            <div
-              className="hero-visual"
-              aria-label={t.accessibility.visual}
-            >
+            <div className="hero-visual" aria-label={t.accessibility.visual}>
               <div className="visual-orbit orbit-one" />
               <div className="visual-orbit orbit-two" />
               <div className="visual-label label-top">
@@ -290,16 +310,18 @@ export default function App() {
               {t.services.items.map(([title, text, tag], index) => {
                 const Icon = [MonitorPlay, QrCode, Palette, Megaphone][index];
                 return (
-                <article className="service-card" key={title}>
-                  <div className="service-card-top">
-                    <span className="service-number">{String(index + 1).padStart(2, "0")}</span>
-                    <Icon size={27} weight="light" />
-                  </div>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                  <span className="service-tag">{tag}</span>
-                  <ArrowUpRight className="card-arrow" size={19} />
-                </article>
+                  <article className="service-card" key={title}>
+                    <div className="service-card-top">
+                      <span className="service-number">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <Icon size={27} weight="light" />
+                    </div>
+                    <h3>{title}</h3>
+                    <p>{text}</p>
+                    <span className="service-tag">{tag}</span>
+                    <ArrowUpRight className="card-arrow" size={19} />
+                  </article>
                 );
               })}
             </div>
@@ -312,8 +334,7 @@ export default function App() {
               <h2>{t.loyalty.title}</h2>
               <p>{t.loyalty.text}</p>
               <a className="button button-dark" href="#contato">
-                {t.loyalty.cta}{" "}
-                <ArrowUpRight size={18} weight="bold" />
+                {t.loyalty.cta} <ArrowUpRight size={18} weight="bold" />
               </a>
             </div>
             <div className="loyalty-panel">
@@ -375,6 +396,85 @@ export default function App() {
             </div>
           </div>
         </section>
+        <section className="portfolio section-space" id="portfolio">
+          <div className="container portfolio-grid">
+            <div>
+              <SectionLabel>{t.portfolio.label}</SectionLabel>
+              <h2>{t.portfolio.title}</h2>
+              <p>{t.portfolio.text}</p>
+              <a
+                className="button button-dark"
+                href="https://adv-nathieli.netlify.app/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {t.portfolio.cta} <ArrowUpRight size={18} weight="bold" />
+              </a>
+            </div>
+            <a
+              className="portfolio-card"
+              href="https://adv-nathieli.netlify.app/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label={t.portfolio.cta}
+            >
+              <div className="portfolio-browser">
+                <div className="portfolio-browser-top">
+                  <span className="window-dots">
+                    <i />
+                    <i />
+                    <i />
+                  </span>
+                  <span>adv-nathieli.netlify.app</span>
+                </div>
+                <div className="portfolio-preview">
+                  <span className="portfolio-preview-label">
+                    NATHIELI DE SOUSA
+                  </span>
+                  <strong>Seu direito merece ser respeitado.</strong>
+                  <span className="portfolio-preview-button">
+                    Falar com a advogada
+                  </span>
+                </div>
+              </div>
+              <div className="portfolio-card-footer">
+                <span>{t.portfolio.project}</span>
+                <ArrowUpRight size={18} />
+              </div>
+            </a>
+          </div>
+          <div className="container portfolio-results">
+            <div className="portfolio-results-heading">
+              <SectionLabel>{t.portfolio.resultsLabel}</SectionLabel>
+              <h3>{t.portfolio.resultsTitle}</h3>
+              <p>{t.portfolio.resultsText}</p>
+            </div>
+            <div className="performance-comparison">
+              <figure className="performance-shot">
+                <img
+                  src={performanceBefore}
+                  alt={t.portfolio.beforeAlt}
+                  loading="lazy"
+                />
+                <figcaption>
+                  <span>{t.portfolio.before}</span>
+                  <strong>47</strong>
+                </figcaption>
+              </figure>
+              <figure className="performance-shot">
+                <img
+                  src={performanceAfter}
+                  alt={t.portfolio.afterAlt}
+                  loading="lazy"
+                />
+                <figcaption>
+                  <span>{t.portfolio.after}</span>
+                  <strong>96</strong>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
         <section className="faq section-space">
           <div className="container faq-grid">
             <div>
@@ -405,7 +505,9 @@ export default function App() {
                     <span>{question}</span>
                     <CaretDown size={19} />
                   </button>
-                  {openFaq === index && <p id={`faq-answer-${index}`}>{answer}</p>}
+                  {openFaq === index && (
+                    <p id={`faq-answer-${index}`}>{answer}</p>
+                  )}
                 </div>
               ))}
             </div>
@@ -418,8 +520,8 @@ export default function App() {
               <h2>{t.contact.title}</h2>
               <p>{t.contact.text}</p>
               <div className="contact-details">
-                <a href="mailto:ola@orizon.ag">
-                  <EnvelopeSimple size={19} /> ola@orizon.ag
+                <a href="mailto:Orizonloyalty@gmail.com">
+                  <EnvelopeSimple size={19} /> Orizonloyalty@gmail.com
                 </a>
                 <a href={whatsappUrl} target="_blank" rel="noreferrer">
                   <Phone size={19} /> +351 912 342 274
@@ -431,9 +533,44 @@ export default function App() {
             </div>
             <form
               className="contact-form"
-              onSubmit={(event) => {
+              onSubmit={async (event) => {
                 event.preventDefault();
-                setSubmitted(true);
+                setFormError("");
+                if (!import.meta.env.VITE_WEB3FORMS_ACCESS_KEY) {
+                  setFormError(t.contact.configurationError);
+                  return;
+                }
+                setSending(true);
+                try {
+                  const formData = new FormData(event.currentTarget);
+                  formData.append(
+                    "access_key",
+                    import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
+                  );
+                  formData.append("subject", "Novo contacto pelo site ORIZON");
+                  formData.append("from_name", "Site ORIZON");
+                  const response = await fetch(
+                    "https://api.web3forms.com/submit",
+                    {
+                      method: "POST",
+                      body: formData,
+                    },
+                  );
+                  const result = await response.json();
+                  if (!response.ok || !result.success) {
+                    throw new Error(
+                      result.message || "Web3Forms rejected the submission.",
+                    );
+                  }
+                  setSubmitted(true);
+                  event.currentTarget.reset();
+                } catch (error) {
+                  setFormError(
+                    error instanceof Error ? error.message : t.contact.error,
+                  );
+                } finally {
+                  setSending(false);
+                }
               }}
             >
               <label>
@@ -460,7 +597,9 @@ export default function App() {
                   <option value="" disabled>
                     {t.contact.choose}
                   </option>
-                  {t.contact.options.map((option) => <option key={option}>{option}</option>)}
+                  {t.contact.options.map((option) => (
+                    <option key={option}>{option}</option>
+                  ))}
                 </select>
               </label>
               <label>
@@ -471,20 +610,26 @@ export default function App() {
                   placeholder={t.contact.messagePlaceholder}
                 />
               </label>
-              <button className="button button-primary" type="submit">
+              <button
+                className="button button-primary"
+                type="submit"
+                disabled={sending}
+              >
                 {submitted ? (
                   <>
                     {t.contact.sent} <CheckCircle size={18} weight="fill" />
                   </>
                 ) : (
                   <>
-                    {t.contact.send} <ArrowUpRight size={18} weight="bold" />
+                    {sending ? t.contact.sending : t.contact.send}{" "}
+                    <ArrowUpRight size={18} weight="bold" />
                   </>
                 )}
               </button>
-              {submitted && (
-                <p className="form-note">
-                  {t.contact.note}
+              {submitted && <p className="form-note">{t.contact.note}</p>}
+              {formError && (
+                <p className="form-error" role="alert">
+                  {formError}
                 </p>
               )}
             </form>
@@ -498,6 +643,7 @@ export default function App() {
           <div className="footer-links">
             <a href="#solucoes">{t.nav.solutions}</a>
             <a href="#orizon-loyalty">ORIZON Loyalty</a>
+            <a href="#portfolio">{t.nav.portfolio}</a>
             <a href="#contato">{t.nav.contact}</a>
           </div>
           <a

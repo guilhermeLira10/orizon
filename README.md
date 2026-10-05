@@ -1,4 +1,23 @@
-# React + Vite
+# ORIZON
+
+## Formulário de contacto
+
+O formulário envia as mensagens através do [Web3Forms](https://web3forms.com/). Duplique `.env.example` para `.env`, preencha `VITE_WEB3FORMS_ACCESS_KEY` com a chave gerada no painel do Web3Forms e configure essa chave no ambiente de produção da Netlify.
+
+O endereço de contacto apresentado no site é `Orizonloyalty@gmail.com`.
+
+## Desenvolvimento
+
+```bash
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+```
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 

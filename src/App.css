@@ -777,6 +777,154 @@ h2 em {
   justify-self: end;
   color: var(--gold);
 }
+.portfolio {
+  background: var(--paper-muted);
+}
+.portfolio-grid {
+  display: grid;
+  width: min(100% - 48px, 660px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 46px;
+  align-items: center;
+}
+.portfolio h2 {
+  max-width: 440px;
+}
+.portfolio p {
+  max-width: 430px;
+  margin: 25px 0 30px;
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.7;
+}
+.portfolio-card {
+  display: block;
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  box-shadow: 14px 14px #c9a45c40;
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
+}
+.portfolio-card:hover {
+  box-shadow: 20px 20px #c9a45c40;
+  transform: translate(-5px, -5px);
+}
+.portfolio-browser {
+  overflow: hidden;
+  border: 1px solid #d7d3c9;
+  background: #05212c;
+}
+.portfolio-browser-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  color: #ffffff91;
+  font-size: 10px;
+}
+.portfolio-browser-top .window-dots {
+  display: flex;
+  gap: 4px;
+}
+.portfolio-browser-top .window-dots i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ffffff66;
+}
+.portfolio-preview {
+  display: grid;
+  min-height: 245px;
+  padding: 38px 34px 28px;
+  align-content: end;
+  background: linear-gradient(145deg, #082d39, #071923);
+}
+.portfolio-preview-label {
+  color: var(--gold-bright);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+}
+.portfolio-preview strong {
+  max-width: 330px;
+  margin: 12px 0 25px;
+  color: #fff;
+  font: 500 30px/1.08 var(--display);
+  letter-spacing: -0.05em;
+}
+.portfolio-preview-button {
+  width: max-content;
+  padding: 9px 13px;
+  color: #17201e;
+  background: var(--gold-bright);
+  font-size: 10px;
+}
+.portfolio-card-footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 16px;
+  color: var(--text);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.portfolio-card-footer svg {
+  color: var(--gold);
+}
+.portfolio-results {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.3fr);
+  gap: 72px;
+  align-items: center;
+  margin-top: 95px;
+  padding-top: 58px;
+  padding-bottom: 18px;
+  border-top: 1px solid var(--line);
+}
+.portfolio-results-heading h3 {
+  max-width: 300px;
+  margin: 22px 0 15px;
+  font: 500 30px/1.08 var(--display);
+  letter-spacing: -0.05em;
+}
+.portfolio-results-heading p {
+  max-width: 330px;
+  margin: 0;
+  font-size: 14px;
+}
+.performance-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+.performance-shot {
+  margin: 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  box-shadow: 0 8px 18px #11110f08;
+}
+.performance-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.performance-shot figcaption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 2px 2px;
+  color: var(--text);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.performance-shot figcaption strong {
+  color: var(--gold);
+  font: 600 20px var(--display);
+}
 .faq-grid {
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
@@ -898,6 +1046,16 @@ h2 em {
   font-size: 12px;
   line-height: 1.5;
 }
+.form-error {
+  margin: -5px 0 0;
+  color: #f2a3a3;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.contact-form .button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
 .site-footer {
   padding: 50px 0 25px;
   color: #ffffffb3;
@@ -1017,6 +1175,8 @@ h2 em {
   }
   .intro-grid,
   .loyalty-grid,
+  .portfolio-grid,
+  .portfolio-results,
   .faq-grid,
   .contact-grid {
     grid-template-columns: 1fr;
@@ -1031,6 +1191,12 @@ h2 em {
   }
   .section-heading > p {
     margin-top: 25px;
+  }
+  .portfolio-results {
+    gap: 35px;
+    margin-top: 70px;
+    padding-top: 40px;
+    padding-bottom: 0;
   }
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1116,6 +1282,14 @@ h2 em {
   }
   .contact-section {
     padding: 85px 0;
+  }
+  .portfolio-grid {
+    width: min(100% - 36px, 600px);
+    gap: 32px;
+  }
+  .performance-comparison {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
   .footer-top {
     grid-template-columns: 1fr;
