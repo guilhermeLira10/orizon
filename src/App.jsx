@@ -86,6 +86,7 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(0);
+  const [selectedPerformance, setSelectedPerformance] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [formError, setFormError] = useState("");
@@ -120,6 +121,20 @@ export default function App() {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setSelectedPerformance(null);
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = selectedPerformance ? "hidden" : "";
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [selectedPerformance]);
 
   return (
     <div className="site-shell">
@@ -450,28 +465,52 @@ export default function App() {
               <p>{t.portfolio.resultsText}</p>
             </div>
             <div className="performance-comparison">
-              <figure className="performance-shot">
-                <img
-                  src={performanceBefore}
-                  alt={t.portfolio.beforeAlt}
-                  loading="lazy"
-                />
-                <figcaption>
-                  <span>{t.portfolio.before}</span>
-                  <strong>47</strong>
-                </figcaption>
-              </figure>
-              <figure className="performance-shot">
-                <img
-                  src={performanceAfter}
-                  alt={t.portfolio.afterAlt}
-                  loading="lazy"
-                />
-                <figcaption>
-                  <span>{t.portfolio.after}</span>
-                  <strong>96</strong>
-                </figcaption>
-              </figure>
+              <button
+                className="performance-shot-link"
+                aria-label={t.portfolio.beforeAlt}
+                type="button"
+                onClick={() =>
+                  setSelectedPerformance({
+                    src: performanceBefore,
+                    alt: t.portfolio.beforeAlt,
+                  })
+                }
+              >
+                <figure className="performance-shot">
+                  <img
+                    src={performanceBefore}
+                    alt={t.portfolio.beforeAlt}
+                    loading="lazy"
+                  />
+                  <figcaption>
+                    <span>{t.portfolio.before}</span>
+                    <strong>47</strong>
+                  </figcaption>
+                </figure>
+              </button>
+              <button
+                className="performance-shot-link"
+                aria-label={t.portfolio.afterAlt}
+                type="button"
+                onClick={() =>
+                  setSelectedPerformance({
+                    src: performanceAfter,
+                    alt: t.portfolio.afterAlt,
+                  })
+                }
+              >
+                <figure className="performance-shot">
+                  <img
+                    src={performanceAfter}
+                    alt={t.portfolio.afterAlt}
+                    loading="lazy"
+                  />
+                  <figcaption>
+                    <span>{t.portfolio.after}</span>
+                    <strong>96</strong>
+                  </figcaption>
+                </figure>
+              </button>
             </div>
           </div>
         </section>
@@ -662,6 +701,29 @@ export default function App() {
           <span>{t.footer.tagline}</span>
         </div>
       </footer>
+      {selectedPerformance && (
+        <div
+          className="performance-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={selectedPerformance.alt}
+          onClick={() => setSelectedPerformance(null)}
+        >
+          <button
+            className="performance-lightbox-close"
+            type="button"
+            aria-label={t.nav.closeMenu}
+            onClick={() => setSelectedPerformance(null)}
+          >
+            <X size={24} weight="bold" />
+          </button>
+          <img
+            src={selectedPerformance.src}
+            alt={selectedPerformance.alt}
+            onClick={(event) => event.stopPropagation()}
+          />
+        </div>
+      )}
       <a
         className="whatsapp-float"
         href={whatsappUrl}
