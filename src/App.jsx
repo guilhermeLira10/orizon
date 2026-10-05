@@ -535,6 +535,7 @@ export default function App() {
               className="contact-form"
               onSubmit={async (event) => {
                 event.preventDefault();
+                const form = event.currentTarget;
                 setFormError("");
                 if (!import.meta.env.VITE_WEB3FORMS_ACCESS_KEY) {
                   setFormError(t.contact.configurationError);
@@ -542,7 +543,7 @@ export default function App() {
                 }
                 setSending(true);
                 try {
-                  const formData = new FormData(event.currentTarget);
+                  const formData = new FormData(form);
                   formData.append(
                     "access_key",
                     import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
@@ -563,7 +564,7 @@ export default function App() {
                     );
                   }
                   setSubmitted(true);
-                  event.currentTarget.reset();
+                  form.reset();
                 } catch (error) {
                   setFormError(
                     error instanceof Error ? error.message : t.contact.error,
