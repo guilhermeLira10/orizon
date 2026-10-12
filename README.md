@@ -4,7 +4,7 @@
 
 O formulário envia as mensagens através do [Web3Forms](https://web3forms.com/). Duplique `.env.example` para `.env`, preencha `VITE_WEB3FORMS_ACCESS_KEY` com a chave gerada no painel do Web3Forms e configure essa chave no ambiente de produção da Netlify.
 
-O endereço de contacto apresentado no site é `Orizonloyalty@gmail.com`.
+O contacto no site é feito pelo formulário ou pelo WhatsApp.
 
 ## Desenvolvimento
 

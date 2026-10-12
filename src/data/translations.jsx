@@ -17,7 +17,7 @@ export const translations = {
   "pt-PT": {
     nav: {
       solutions: "Soluções",
-      loyalty: "ORIZON Loyalty",
+      diagnostic: "Diagnóstico",
       process: "Como fazemos",
       portfolio: "Portfólio",
       contact: "Contacto",
@@ -85,22 +85,23 @@ export const translations = {
         ],
       ],
     },
-    loyalty: {
-      label: "UM PRODUTO ORIZON",
+    diagnostic: {
+      label: "UM PRIMEIRO PASSO",
       title: rich([
-        "O seu restaurante tem clientes.",
+        "Antes de criar mais.",
         br(),
-        emphasis("A ORIZON ajuda a fazê-los voltar."),
+        emphasis("Vamos descobrir o que realmente falta."),
       ]),
-      text: "O ORIZON Loyalty é a nossa plataforma de fidelização e inteligência para restaurantes. Transforma dados de consumo em relacionamento, campanhas e decisões mais inteligentes.",
-      cta: "Quero conhecer o produto",
-      sample: "amostra ilustrativa",
-      metric: "leitura de recorrência",
-      tailored: "à medida",
-      data: rich(["dados da sua operação ", span("num só lugar")]),
-      insightLabel: "ORIZON insight / exemplo",
+      text: "O Diagnóstico ORIZON é uma leitura estratégica da sua presença digital. Analisamos posicionamento, experiência e comunicação para transformar pontos soltos num plano claro de evolução.",
+      cta: "Quero o meu diagnóstico",
+      panel: "ORIZON / DIREÇÃO",
+      sample: "leitura estratégica",
+      metric: "mapa de oportunidades",
+      tailored: "clareza para avançar",
+      data: rich(["marca, site e comunicação ", span("sob a mesma direção")]),
+      insightLabel: "PRÓXIMO PASSO / PRIORIDADE",
       insight:
-        "Encontre clientes que estão a demorar mais a voltar e transforme esse sinal numa campanha de relacionamento.",
+        "Identificamos o ponto de maior impacto e organizamos um caminho prático para a sua marca avançar com intenção.",
     },
     process: {
       label: "COMO FAZEMOS",
@@ -129,7 +130,7 @@ export const translations = {
       items: [
         [
           "Atendem empresas de qualquer segmento?",
-          "Sim. Actuamos com negócios locais, serviços e empresas em crescimento. Para restaurantes, também criamos experiências digitais e estratégias de recorrência mais específicas.",
+          "Sim. Actuamos com negócios locais, serviços e empresas em crescimento. Adaptamos a estratégia, a linguagem e a experiência ao contexto de cada marca.",
         ],
         [
           "Quanto tempo leva para colocar um site no ar?",
@@ -181,7 +182,7 @@ export const translations = {
         "Site ou landing page",
         "Marca e identidade visual",
         "Marketing e tráfego pago",
-        "ORIZON Loyalty",
+        "Diagnóstico de presença digital",
       ],
     },
     footer: {
@@ -199,7 +200,7 @@ export const translations = {
   "pt-BR": {
     nav: {
       solutions: "Soluções",
-      loyalty: "ORIZON Loyalty",
+      diagnostic: "Diagnóstico",
       process: "Como fazemos",
       portfolio: "Portfólio",
       contact: "Contato",
@@ -267,22 +268,23 @@ export const translations = {
         ],
       ],
     },
-    loyalty: {
-      label: "UM PRODUTO ORIZON",
+    diagnostic: {
+      label: "UM PRIMEIRO PASSO",
       title: rich([
-        "Seu restaurante tem clientes.",
+        "Antes de criar mais.",
         br(),
-        emphasis("A ORIZON ajuda a fazer eles voltarem."),
+        emphasis("Vamos descobrir o que realmente falta."),
       ]),
-      text: "O ORIZON Loyalty é nossa plataforma de fidelização e inteligência para restaurantes. Ela transforma dados de consumo em relacionamento, campanhas e decisões mais inteligentes.",
-      cta: "Quero conhecer o produto",
-      sample: "amostra ilustrativa",
-      metric: "leitura de recorrência",
-      tailored: "sob medida",
-      data: rich(["dados da sua operação ", span("em um só lugar")]),
-      insightLabel: "ORIZON insight / exemplo",
+      text: "O Diagnóstico ORIZON é uma leitura estratégica da sua presença digital. Analisamos posicionamento, experiência e comunicação para transformar pontos soltos em um plano claro de evolução.",
+      cta: "Quero meu diagnóstico",
+      panel: "ORIZON / DIREÇÃO",
+      sample: "leitura estratégica",
+      metric: "mapa de oportunidades",
+      tailored: "clareza para avançar",
+      data: rich(["marca, site e comunicação ", span("sob a mesma direção")]),
+      insightLabel: "PRÓXIMO PASSO / PRIORIDADE",
       insight:
-        "Encontre clientes que estão demorando mais para voltar e transforme esse sinal em uma campanha de relacionamento.",
+        "Identificamos o ponto de maior impacto e organizamos um caminho prático para sua marca avançar com intenção.",
     },
     process: {
       label: "COMO FAZEMOS",
@@ -311,7 +313,7 @@ export const translations = {
       items: [
         [
           "Vocês atendem empresas de qualquer segmento?",
-          "Sim. Atuamos com negócios locais, serviços e empresas em crescimento. Para restaurantes, também criamos experiências digitais e estratégias de recorrência mais específicas.",
+          "Sim. Atuamos com negócios locais, serviços e empresas em crescimento. Adaptamos a estratégia, a linguagem e a experiência ao contexto de cada marca.",
         ],
         [
           "Quanto tempo leva para colocar um site no ar?",
@@ -363,7 +365,7 @@ export const translations = {
         "Site ou landing page",
         "Marca e identidade visual",
         "Marketing e tráfego pago",
-        "ORIZON Loyalty",
+        "Diagnóstico de presença digital",
       ],
     },
     footer: {
@@ -381,7 +383,7 @@ export const translations = {
   en: {
     nav: {
       solutions: "Solutions",
-      loyalty: "ORIZON Loyalty",
+      diagnostic: "Digital audit",
       process: "Our process",
       portfolio: "Portfolio",
       contact: "Contact",
@@ -449,22 +451,26 @@ export const translations = {
         ],
       ],
     },
-    loyalty: {
-      label: "AN ORIZON PRODUCT",
+    diagnostic: {
+      label: "A SMART FIRST STEP",
       title: rich([
-        "Your restaurant has customers.",
+        "Before creating more.",
         br(),
-        emphasis("ORIZON helps bring them back."),
+        emphasis("Let us uncover what is really missing."),
       ]),
-      text: "ORIZON Loyalty is our loyalty and intelligence platform for restaurants. It turns consumption data into relationships, campaigns and smarter decisions.",
-      cta: "Discover the product",
-      sample: "illustrative sample",
-      metric: "returning customer read",
-      tailored: "tailored",
-      data: rich(["your operation's data ", span("in one place")]),
-      insightLabel: "ORIZON insight / example",
+      text: "The ORIZON Digital Audit is a strategic review of your digital presence. We analyse positioning, experience and communication to turn disconnected efforts into a clear plan for progress.",
+      cta: "Request my audit",
+      panel: "ORIZON / DIRECTION",
+      sample: "strategic review",
+      metric: "opportunity map",
+      tailored: "clarity to move forward",
+      data: rich([
+        "brand, website and communication ",
+        span("moving in one direction"),
+      ]),
+      insightLabel: "NEXT STEP / PRIORITY",
       insight:
-        "Find customers taking longer to return and turn that signal into a relationship campaign.",
+        "We identify the highest-impact opportunity and organise a practical path for your brand to move forward with intention.",
     },
     process: {
       label: "OUR PROCESS",
@@ -490,7 +496,7 @@ export const translations = {
       items: [
         [
           "Do you work with businesses in any industry?",
-          "Yes. We work with local businesses, services and growing companies. For restaurants, we also create more specific digital experiences and retention strategies.",
+          "Yes. We work with local businesses, services and growing companies. We adapt the strategy, language and experience to each brand's context.",
         ],
         [
           "How long does it take to launch a website?",
@@ -543,7 +549,7 @@ export const translations = {
         "Website or landing page",
         "Brand and visual identity",
         "Marketing and paid media",
-        "ORIZON Loyalty",
+        "Digital presence audit",
       ],
     },
     footer: {

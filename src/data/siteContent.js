@@ -37,7 +37,7 @@ export const services = [
 export const faqs = [
   [
     "Vocês atendem empresas de qualquer segmento?",
-    "Sim. Atuamos com negócios locais, serviços e empresas em crescimento. Para restaurantes, também criamos experiências digitais e estratégias de recorrência mais específicas.",
+    "Sim. Atuamos com negócios locais, serviços e empresas em crescimento. Adaptamos a estratégia, a linguagem e a experiência ao contexto de cada marca.",
   ],
   [
     "Quanto tempo leva para colocar um site no ar?",

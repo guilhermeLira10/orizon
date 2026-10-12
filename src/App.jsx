@@ -4,7 +4,6 @@ import {
   CaretDown,
   Check,
   CheckCircle,
-  EnvelopeSimple,
   InstagramLogo,
   List,
   MagicWand,
@@ -23,6 +22,31 @@ import { languageOptions, translations } from "./data/translations.jsx";
 import performanceBefore from "./assets/nathieli-performance-before.png";
 import performanceAfter from "./assets/nathieli-performance-after.png";
 import "./App.css";
+
+const analyticsId = "G-B5MFCFJ1SK";
+const cookieCopy = {
+  "pt-PT": {
+    title: "A sua privacidade importa",
+    text: "Utilizamos cookies de análise para perceber como o site é utilizado e melhorar a sua experiência. Só ativamos estes cookies com a sua autorização.",
+    accept: "Aceitar cookies",
+    reject: "Recusar",
+    label: "Aviso de cookies",
+  },
+  "pt-BR": {
+    title: "A sua privacidade importa",
+    text: "Utilizamos cookies de análise para entender como o site é usado e melhorar a sua experiência. Só ativamos esses cookies com a sua autorização.",
+    accept: "Aceitar cookies",
+    reject: "Recusar",
+    label: "Aviso de cookies",
+  },
+  en: {
+    title: "Your privacy matters",
+    text: "We use analytics cookies to understand how the site is used and improve your experience. These cookies are only activated with your permission.",
+    accept: "Accept cookies",
+    reject: "Decline",
+    label: "Cookie notice",
+  },
+};
 
 function Logo({ light = false, label }) {
   return (
@@ -90,7 +114,11 @@ export default function App() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [formError, setFormError] = useState("");
+  const [cookieConsent, setCookieConsent] = useState(() =>
+    window.localStorage.getItem("orizon-cookie-consent"),
+  );
   const t = translations[language];
+  const cookies = cookieCopy[language];
   const languagePickerRef = useRef(null);
   const selectedLanguage = languageOptions.find(
     (option) => option.value === language,
@@ -101,6 +129,39 @@ export default function App() {
     document.documentElement.lang = language;
     window.localStorage.setItem("orizon-language", language);
   }, [language]);
+
+  useEffect(() => {
+    if (!cookieConsent) {
+      return;
+    }
+
+    const granted = cookieConsent === "accepted";
+    window.gtag("consent", "update", {
+      analytics_storage: granted ? "granted" : "denied",
+      ad_storage: granted ? "granted" : "denied",
+      ad_user_data: granted ? "granted" : "denied",
+      ad_personalization: granted ? "granted" : "denied",
+    });
+
+    if (!granted || document.querySelector("#orizon-analytics")) {
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.id = "orizon-analytics";
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${analyticsId}`;
+    document.head.appendChild(script);
+    window.gtag("js", new Date());
+    window.gtag("config", analyticsId, {
+      anonymize_ip: true,
+    });
+  }, [cookieConsent]);
+
+  const saveCookieConsent = (value) => {
+    window.localStorage.setItem("orizon-cookie-consent", value);
+    setCookieConsent(value);
+  };
 
   useEffect(() => {
     const handlePointerDown = (event) => {
@@ -148,8 +209,8 @@ export default function App() {
             <a href="#solucoes" onClick={closeMenu}>
               {t.nav.solutions}
             </a>
-            <a href="#orizon-loyalty" onClick={closeMenu}>
-              {t.nav.loyalty}
+            <a href="#diagnostico" onClick={closeMenu}>
+              {t.nav.diagnostic}
             </a>
             <a href="#processo" onClick={closeMenu}>
               {t.nav.process}
@@ -342,29 +403,29 @@ export default function App() {
             </div>
           </div>
         </section>
-        <section className="loyalty-section section-space" id="orizon-loyalty">
-          <div className="container loyalty-grid">
-            <div className="loyalty-copy">
-              <SectionLabel>{t.loyalty.label}</SectionLabel>
-              <h2>{t.loyalty.title}</h2>
-              <p>{t.loyalty.text}</p>
+        <section className="diagnostic-section section-space" id="diagnostico">
+          <div className="container diagnostic-grid">
+            <div className="diagnostic-copy">
+              <SectionLabel>{t.diagnostic.label}</SectionLabel>
+              <h2>{t.diagnostic.title}</h2>
+              <p>{t.diagnostic.text}</p>
               <a className="button button-dark" href="#contato">
-                {t.loyalty.cta} <ArrowUpRight size={18} weight="bold" />
+                {t.diagnostic.cta} <ArrowUpRight size={18} weight="bold" />
               </a>
             </div>
-            <div className="loyalty-panel">
-              <div className="loyalty-panel-head">
+            <div className="diagnostic-panel">
+              <div className="diagnostic-panel-head">
                 <span>
-                  <span className="mini-mark" /> ORIZON / loyalty
+                  <span className="mini-mark" /> {t.diagnostic.panel}
                 </span>
                 <span className="panel-live">
-                  <span /> {t.loyalty.sample}
+                  <span /> {t.diagnostic.sample}
                 </span>
               </div>
               <div className="metric-main">
-                <span>{t.loyalty.metric}</span>
-                <strong>{t.loyalty.tailored}</strong>
-                <small>{t.loyalty.data}</small>
+                <span>{t.diagnostic.metric}</span>
+                <strong>{t.diagnostic.tailored}</strong>
+                <small>{t.diagnostic.data}</small>
               </div>
               <div className="metric-bars">
                 <i style={{ height: "46%" }} />
@@ -380,8 +441,8 @@ export default function App() {
                   <MagicWand size={18} weight="fill" />
                 </div>
                 <div>
-                  <span>{t.loyalty.insightLabel}</span>
-                  <p>{t.loyalty.insight}</p>
+                  <span>{t.diagnostic.insightLabel}</span>
+                  <p>{t.diagnostic.insight}</p>
                 </div>
                 <ArrowUpRight size={17} />
               </div>
@@ -559,9 +620,6 @@ export default function App() {
               <h2>{t.contact.title}</h2>
               <p>{t.contact.text}</p>
               <div className="contact-details">
-                <a href="mailto:Orizonloyalty@gmail.com">
-                  <EnvelopeSimple size={19} /> Orizonloyalty@gmail.com
-                </a>
                 <a href={whatsappUrl} target="_blank" rel="noreferrer">
                   <Phone size={19} /> +351 912 342 274
                 </a>
@@ -682,7 +740,7 @@ export default function App() {
           <p>{t.footer.description}</p>
           <div className="footer-links">
             <a href="#solucoes">{t.nav.solutions}</a>
-            <a href="#orizon-loyalty">ORIZON Loyalty</a>
+            <a href="#diagnostico">{t.nav.diagnostic}</a>
             <a href="#portfolio">{t.nav.portfolio}</a>
             <a href="#contato">{t.nav.contact}</a>
           </div>
@@ -701,6 +759,34 @@ export default function App() {
           <span>{t.footer.tagline}</span>
         </div>
       </footer>
+      {!cookieConsent && (
+        <aside
+          className="cookie-banner"
+          role="dialog"
+          aria-label={cookies.label}
+        >
+          <div className="cookie-banner-content">
+            <h2>{cookies.title}</h2>
+            <p>{cookies.text}</p>
+          </div>
+          <div className="cookie-banner-actions">
+            <button
+              className="cookie-button cookie-button-secondary"
+              type="button"
+              onClick={() => saveCookieConsent("rejected")}
+            >
+              {cookies.reject}
+            </button>
+            <button
+              className="cookie-button cookie-button-primary"
+              type="button"
+              onClick={() => saveCookieConsent("accepted")}
+            >
+              {cookies.accept}
+            </button>
+          </div>
+        </aside>
+      )}
       {selectedPerformance && (
         <div
           className="performance-lightbox"

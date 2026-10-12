@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Apresentar a ORIZON como uma parceira de estratégia, design e tecnologia para negócios que precisam construir uma presença digital mais clara e desejável. O ORIZON Loyalty aparece como produto proprietário para restaurantes, sem substituir o posicionamento principal da empresa.
+Apresentar a ORIZON como uma parceira de estratégia, design e tecnologia para negócios que precisam construir uma presença digital mais clara e desejável. O Diagnóstico ORIZON funciona como primeiro passo: uma leitura estratégica de marca, site e comunicação que organiza prioridades e conduz aos serviços da empresa.
 
 ## Direção visual
 
