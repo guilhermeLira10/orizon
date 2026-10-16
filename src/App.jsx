@@ -21,6 +21,7 @@ import { whatsappUrl } from "./data/siteContent";
 import { languageOptions, translations } from "./data/translations.jsx";
 import performanceBefore from "./assets/nathieli-performance-before.png";
 import performanceAfter from "./assets/nathieli-performance-after.png";
+import brandLogo from "./assets/logo-transparent.png";
 import "./App.css";
 
 const analyticsId = "G-B5MFCFJ1SK";
@@ -55,10 +56,15 @@ function Logo({ light = false, label }) {
       href="#inicio"
       aria-label={label}
     >
-      <span className="logo-mark" aria-hidden="true">
-        <span />
-      </span>
-      <span>ORIZON</span>
+      <img
+        className="logo-image"
+        src={brandLogo}
+        alt=""
+        width="2171"
+        height="724"
+        aria-hidden="true"
+      />
+      <span className="logo-wordmark">ORIZON</span>
     </a>
   );
 }

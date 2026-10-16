@@ -21,23 +21,21 @@
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font: 800 17px var(--display);
   letter-spacing: 0.18em;
   color: #fff;
 }
-.logo-mark {
-  display: grid;
-  place-items: center;
-  width: 22px;
-  height: 22px;
-  border: 1px solid var(--gold-bright);
-  transform: rotate(45deg);
+.logo-image {
+  display: block;
+  width: 64px;
+  height: 30px;
+  flex: 0 0 auto;
+  object-fit: cover;
+  object-position: center;
 }
-.logo-mark span {
-  width: 9px;
-  height: 9px;
-  background: var(--gold-bright);
+.logo-wordmark {
+  line-height: 1;
 }
 .main-nav {
   display: flex;
@@ -1343,6 +1341,10 @@ h2 em {
   }
 }
 @media (max-width: 500px) {
+  .logo-image {
+    width: 56px;
+    height: 26px;
+  }
   h1 {
     font-size: 43px;
   }
