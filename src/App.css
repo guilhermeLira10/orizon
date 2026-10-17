@@ -103,28 +103,24 @@
 }
 .language-picker {
   position: relative;
-  display: flex;
-  align-items: center;
-  margin-left: 12px;
+  margin-left: 16px;
 }
 .language-trigger {
   display: flex;
+  min-width: 62px;
+  height: 40px;
   align-items: center;
-  gap: 11px;
-  min-width: 84px;
-  height: 42px;
-  padding: 0 14px;
-  border: 1px solid #ffffff20;
-  border-radius: 24px;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 11px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
   color: var(--ink);
-  background: #fff;
-  box-shadow: 0 8px 20px #0000001f;
-  font-size: 19px;
+  background: var(--surface, #fbfaf6);
   cursor: pointer;
 }
 .language-caret {
-  color: #4c478f;
-  transition: transform 0.2s;
+  transition: transform 180ms ease;
 }
 .language-trigger[aria-expanded="true"] .language-caret {
   transform: rotate(180deg);
@@ -134,25 +130,26 @@
   z-index: 10;
   top: calc(100% + 10px);
   right: 0;
-  width: 238px;
+  display: grid;
+  width: 226px;
+  gap: 4px;
   padding: 8px;
-  border: 1px solid #e6e4df;
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0 16px 35px #0000001f;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface, #fbfaf6);
+  box-shadow: 0 18px 48px color-mix(in srgb, var(--ink) 14%, transparent);
 }
 .language-option {
-  display: flex;
+  display: grid;
+  min-height: 42px;
+  grid-template-columns: 24px 1fr 18px;
   align-items: center;
-  gap: 13px;
-  width: 100%;
-  padding: 12px 11px;
+  gap: 10px;
+  padding: 8px 10px;
   border: 0;
   border-radius: 6px;
   color: var(--ink);
   background: transparent;
-  font-size: 13px;
-  font-weight: 600;
   text-align: left;
   cursor: pointer;
 }
@@ -161,15 +158,16 @@
   background: var(--paper-muted);
 }
 .language-option > svg:not(.language-flag) {
-  margin-left: auto;
-  color: #4b956e;
+  color: var(--gold);
 }
 .language-flag {
-  display: block;
-  width: 32px;
-  height: 22px;
-  object-fit: cover;
-  border-radius: 1px;
+  width: 23px;
+  height: 16px;
+  border: 1px solid var(--line);
+}
+.language-trigger:active,
+.language-option:active {
+  transform: scale(0.98);
 }
 .sr-only {
   position: absolute;
@@ -1246,6 +1244,9 @@ h2 em {
   .main-nav a {
     padding: 17px 20px;
     border-bottom: 1px solid #ffffff17;
+  }
+  .language-picker {
+    margin-left: auto;
   }
   .hero {
     min-height: 880px;
